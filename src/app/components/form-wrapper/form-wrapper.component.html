@@ -1,0 +1,47 @@
+<!-- Form wrapper start -->
+<div class="form-container">
+  <!-- form header start  -->
+  <div class="form-header">
+    <span class="title"> {{ formTitle }} </span>
+    <p class="subtitle">
+      Mit 10 Jahren Erfahrung hilft Ihnen renovero unkompliziert Ihren Fachmann finden.
+    </p>
+  </div>
+  <!--/ form header end /-->
+
+  <!-- form content start  -->
+  <div class="form-holder">
+    <form [formGroup]="myForm" (ngSubmit)="submit()">
+      <!-- dropdown component  -->
+      <app-dropdown-select
+        [label]="dropdownProps.label"
+        [options]="dropdownProps.options"
+        [placeholder]="dropdownProps.placeholder"
+        [parentForm]="myForm"
+        [formFieldTitle]="dropdownProps.formFieldTitle"
+      >
+      </app-dropdown-select>
+      <!--/ dropdown component end  /-->
+
+      <app-text-area
+        [label]="textareaProps.label"
+        [parentForm]="myForm"
+        [formFieldTitle]="textareaProps.formFieldTitle"
+        [rows]="textareaProps.rows"
+      ></app-text-area>
+
+
+      <app-email-input
+        [label]="emailProps.label"
+        [parentForm]="myForm"
+        [formFieldTitle]="emailProps.formFieldTitle"
+      ></app-email-input>
+      <app-form-submit
+      buttonLabel="Submit"
+      (onSubmitEvent)="onSubmitHandler()"
+      [parentForm]="myForm"></app-form-submit>
+    </form>
+  </div>
+  <!--/ form content end  /-->
+</div>
+<!--/ Form wrapper end /-->

@@ -1,0 +1,44 @@
+<!-- form group passed from parent form  -->
+<div class="input-holder" [formGroup]="parentForm">
+  <div class="f-col">
+    <label>{{ label }}</label>
+
+    <div class="input-wrapper">
+      <input
+        type="text"
+        [placeholder]="placeholder"
+        (keyup)="filterOptionsHandler($event)"
+        (click)="focused = !focused"
+        [formControlName]="formFieldTitle"
+      />
+
+      <span class="arrow-field" (click)="switchFocus()">
+        <span class="arrow" [ngClass]="{ open: focused }"></span>
+      </span>
+
+      <div class="options-holder" [ngClass]="{ 'open-options': focused }">
+        <span
+          *ngFor="let option of options"
+          class="option"
+          (click)="updateInput(option, $event)"
+          >{{ option }}</span
+        >
+        <span *ngIf="options.length == 0">
+          No mathing values
+        </span>
+      </div>
+      <div class="error-message-holder">
+
+        <span
+        *ngIf="
+        parentForm.get(formFieldTitle).hasError('required') &&
+        (parentForm.get(formFieldTitle).dirty ||
+        parentForm.get(formFieldTitle).touched)
+        "
+        >
+        required
+      </span>
+    </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<!-- form group passed from parent form  -->
+<div class="input-holder" [formGroup]="parentForm">
+  <div class="f-col">
+    <label>{{ label }}</label>
+    <div class="input-wrapper">
+      <textarea
+        [formControlName]="formFieldTitle"
+        [rows]="rows"
+        [class.invalid]="
+          parentForm.get(formFieldTitle).invalid &&
+          (parentForm.get(formFieldTitle).dirty ||
+            parentForm.get(formFieldTitle).touched)
+        "
+      ></textarea>
+      <span
+        *ngIf="
+          parentForm.get(formFieldTitle).invalid &&
+          (parentForm.get(formFieldTitle).dirty ||
+            parentForm.get(formFieldTitle).touched)
+        "
+      >
+        invalid
+      </span>
+    </div>
+  </div>
+</div>

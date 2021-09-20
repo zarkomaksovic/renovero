@@ -1,0 +1,24 @@
+@import "../../../assets/scss/variables";
+.form-container {
+  width: 500px;
+  min-height: 500px;
+  border: 1px solid;
+  box-sizing: border-box;
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 0 21px 5px #00000026;
+  border-radius: 2px;
+  border-top: 8px solid $primary-color;
+  .form-header {
+    width: 100%;
+    .title {
+      font-size: 21px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+  }
+}

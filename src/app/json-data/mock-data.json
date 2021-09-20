@@ -1,0 +1,19 @@
+{
+  "formTitle": "Maler finden",
+
+  "dropdownData": {
+    "label": "Welche Arbeit soll ausgeführt werden?*",
+    "formFieldTitle": "title",
+    "placeholder": "Leistung auswählen oder anfangen zu tippen",
+    "options": ["abcde", "abbcde", "cccccccc"]
+  },
+  "textareaProps": {
+    "label": "Beschreiben Sie die auszuführende Arbeiten:* ",
+    "formFieldTitle": "description",
+    "rows": "10"
+  },
+  "emailProps": {
+    "label": "Ausführungsort*",
+    "formFieldTitle": "email"
+  }
+}

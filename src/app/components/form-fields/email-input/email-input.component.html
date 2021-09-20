@@ -1,0 +1,35 @@
+<!-- form group passed from parent form  -->
+<div class="input-holder" [formGroup]="parentForm">
+  <div class="f-col">
+    <label>{{ label }}</label>
+    <div class="input-wrapper">
+      <input
+        type="email"
+        [formControlName]="formFieldTitle"
+        [class.invalid]="
+          parentForm.get(formFieldTitle).invalid &&
+          (parentForm.get(formFieldTitle).dirty ||
+            parentForm.get(formFieldTitle).touched)
+        "
+      />
+      <span
+        *ngIf="
+          parentForm.get(formFieldTitle).invalid &&
+          (parentForm.get(formFieldTitle).dirty ||
+            parentForm.get(formFieldTitle).touched)
+        "
+      >
+        invalid
+      </span>
+      <span
+        *ngIf="
+          parentForm.get(formFieldTitle).hasError('required') &&
+          (parentForm.get(formFieldTitle).dirty ||
+            parentForm.get(formFieldTitle).touched)
+        "
+      >
+        required
+      </span>
+    </div>
+  </div>
+</div>
