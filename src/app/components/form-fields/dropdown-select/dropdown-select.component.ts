@@ -25,44 +25,45 @@ export class DropdownSelectComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    // make a copy of all options from @input and use it later for filtering
     this.optionsToFilter = this.options;
   }
 
+  optionSelectedHandler(event) {
+    this.value = event;
+    this.focused = false;
+  }
+
+  // filter options when user types
   filterOptionsHandler(event: Event) {
     this.options = this.optionsToFilter.filter((option) =>
-      option.startsWith((event.target as HTMLInputElement).value)
+      option.toLowerCase().includes((event.target as HTMLInputElement).value)
     );
-    this.checkTypedValue()
+    this.checkTypedValue();
+  }
+
+  // check if typed value matches with some in predefined options
+  checkTypedValue(event?: Event) {
+    const currentInput = this.control.value;
+    const isMatching = this.optionsToFilter.includes(currentInput);
+
+    // no match - error
+    if (!isMatching) {
+      this.control.setErrors({ required: true });
+    }
   }
 
   switchFocus() {
     this.focused = !this.focused;
   }
 
+  // setter for the selected value
   set value(val) {
     this.parentForm.get(this.formFieldTitle).setValue(val);
   }
 
+  // control getter
   get control() {
     return this.parentForm.get(this.formFieldTitle) as FormControl;
-  }
-
-  updateInput(option, event) {
-    // event.preventDefault()
-    // event.stopPropagation()
-    this.value = option;
-    this.focused = false;
-  }
-
-  checkTypedValue(event?: Event) {
-
-    const currentInput = this.control.value;
-    const isMatching = this.optionsToFilter.includes(currentInput);
-    if (!isMatching) {
-      this.control.setErrors({required: true})
-
-    } else {
-      this.focused = false;
-    }
   }
 }

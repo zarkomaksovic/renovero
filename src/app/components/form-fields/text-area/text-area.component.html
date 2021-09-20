@@ -6,21 +6,10 @@
       <textarea
         [formControlName]="formFieldTitle"
         [rows]="rows"
-        [class.invalid]="
-          parentForm.get(formFieldTitle).invalid &&
-          (parentForm.get(formFieldTitle).dirty ||
-            parentForm.get(formFieldTitle).touched)
-        "
+        [class.invalid]="control.invalid && (control.dirty || control.touched)"
+        (blur)="checkText()"
       ></textarea>
-      <span
-        *ngIf="
-          parentForm.get(formFieldTitle).invalid &&
-          (parentForm.get(formFieldTitle).dirty ||
-            parentForm.get(formFieldTitle).touched)
-        "
-      >
-        invalid
-      </span>
+      <app-error-message [control]="control"></app-error-message>
     </div>
   </div>
 </div>

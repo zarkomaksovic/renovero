@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-text-area',
@@ -20,11 +20,16 @@ export class TextAreaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.controls
   }
 
-  get controls() {
-    console.log(this.parentForm.controls)
-    return this.parentForm.controls;
+  get control() {
+    return this.parentForm.get(this.formFieldTitle) as FormControl;
+  }
+
+  // check if entered text is not all spaces, breaks
+  checkText() {
+    if (!this.control.value.trim()) {
+      this.control.setErrors({required: true})
+    }
   }
 }

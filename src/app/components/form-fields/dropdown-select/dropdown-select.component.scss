@@ -1,33 +1,10 @@
-@import "../../../../assets/scss/variables";
+@import "../../../../../src/app/scss/variables";
 
 .input-holder {
   // Input settings
   .input-wrapper {
     position: relative;
-    .options-holder {
-      // min-height: 200px;
-      border: 1px solid $primary-color;
-      overflow-y: auto;
-      display: none;
-      &.open-options {
-        display: block;
-        position: absolute;
-        width: 100%;
-        background: white;
-        min-height: 30px;
-        padding: 15px;
-      }
-      .option {
-        display: block;
-        padding: 8px 16px;
-        border-bottom: 1px solid black;
-        cursor: pointer;
-        &:hover {
-          background-color: $hover-color;
-          color: white;
-        }
-      }
-    }
+
     // Select arrow settings
 
     .arrow-field {
@@ -78,8 +55,5 @@
         }
       }
     }
-  }
-  .error-message-holder {
-    height: 15px;
   }
 }

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-email-input',
   templateUrl: './email-input.component.html',
-  styleUrls: ['./email-input.component.scss']
+  styleUrls: ['./email-input.component.scss'],
 })
 export class EmailInputComponent implements OnInit {
   @Input()
@@ -17,19 +17,20 @@ export class EmailInputComponent implements OnInit {
   rows: string | undefined;
 
   @Input() parentForm: FormGroup;
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.setEmailValidation()
+    this.setEmailValidation();
   }
   setEmailValidation() {
-    console.log(this.parentForm.controls[this.formFieldTitle])
-    // this.parentForm.controls[this.formFieldTitle].addValidators(Validators.email);
-
+    this.control.addValidators(Validators.email);
   }
 
   get controls() {
     return this.parentForm.controls;
   }
 
+  get control() {
+    return this.parentForm.get(this.formFieldTitle) as FormControl;
+  }
 }

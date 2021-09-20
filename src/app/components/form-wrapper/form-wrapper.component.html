@@ -3,10 +3,12 @@
   <!-- form header start  -->
   <div class="form-header">
     <span class="title"> {{ formTitle }} </span>
-    <p class="subtitle">
-      Mit 10 Jahren Erfahrung hilft Ihnen renovero unkompliziert Ihren Fachmann finden.
-    </p>
   </div>
+  <p class="subtitle">
+    Mit <strong>10 Jahren Erfahrung </strong> hilft Ihnen renovero unkompliziert
+    Ihren <strong>Fachmann</strong>
+    finden.
+  </p>
   <!--/ form header end /-->
 
   <!-- form content start  -->
@@ -23,23 +25,31 @@
       </app-dropdown-select>
       <!--/ dropdown component end  /-->
 
+      <!-- textarea component  -->
       <app-text-area
         [label]="textareaProps.label"
         [parentForm]="myForm"
         [formFieldTitle]="textareaProps.formFieldTitle"
         [rows]="textareaProps.rows"
       ></app-text-area>
+      <!--/ textarea component end /-->
 
-
+      <!-- email component  -->
       <app-email-input
         [label]="emailProps.label"
         [parentForm]="myForm"
         [formFieldTitle]="emailProps.formFieldTitle"
       ></app-email-input>
+      <!--/ email component end /-->
+
+      <!-- submit button component  -->
       <app-form-submit
-      buttonLabel="Submit"
-      (onSubmitEvent)="onSubmitHandler()"
-      [parentForm]="myForm"></app-form-submit>
+        buttonLabel="Submit"
+        (onSubmitEvent)="onSubmitHandler()"
+        [parentForm]="myForm"
+        [buttonLabel]="buttonLabel"
+      ></app-form-submit>
+      <!--/ submit button component end /-->
     </form>
   </div>
   <!--/ form content end  /-->

@@ -1,0 +1,9 @@
+<div class="options-holder" [ngClass]="{ 'open-options': focused }">
+  <span
+    *ngFor="let option of options"
+    class="option"
+    (click)="updateInput(option)"
+    >{{ option }}</span
+  >
+  <span *ngIf="options.length == 0"> No mathing values </span>
+</div>

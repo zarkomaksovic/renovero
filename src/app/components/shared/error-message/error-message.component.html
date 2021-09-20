@@ -1,0 +1,19 @@
+
+      <div class="error-message-holder">
+        <span
+          class="error-message"
+          *ngIf="
+            control.hasError('required') && (control.dirty || control.touched)
+          "
+        >
+          This field is required
+        </span>
+        <span
+          class="error-message"
+          *ngIf="
+            control.hasError('email') && (control.dirty || control.touched)
+          "
+        >
+          Email format is invalid
+        </span>
+      </div>

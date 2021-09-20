@@ -1,0 +1,26 @@
+@import "../../../../scss/variables";
+.options-holder {
+  border: 1px solid $secondary-color;
+  overflow-y: auto;
+  display: none;
+  &.open-options {
+    display: block;
+    position: absolute;
+    width: 100%;
+    background: white;
+    min-height: 30px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .option {
+    display: block;
+    padding: 10px 15px;
+    border-bottom: 1px solid $secondary-color;
+    cursor: pointer;
+    font-size: 15px;
+    &:hover {
+      background-color: $theme-primary;
+      color: white;
+    }
+  }
+}

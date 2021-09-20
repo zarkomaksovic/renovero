@@ -1,0 +1,51 @@
+@import "./variables.scss";
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $theme-primary;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: $primary-font;
+}
+
+.f-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-holder {
+  margin-bottom: 20px;
+  input,
+  textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid $secondary-color;
+  }
+}
+.error-message-holder {
+  height: 15px;
+}
+span.error-message {
+  color: $error;
+  font-size: 12px;
+  padding: 5px;
+}
+input.invalid,
+textarea.invalid {
+  border-color: red;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
