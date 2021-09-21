@@ -5,7 +5,38 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class DataService {
+  // create mock data for test
+  mockData = {
+    formTitle: 'Maler finden',
+    buttonLabel: 'Kontaktdaten angeben',
+    dropdownProps: {
+      label: 'Welche Arbeit soll ausgeführt werden?*',
+      formFieldTitle: 'title',
+      placeholder: 'Leistung auswählen oder anfangen zu tippen',
+      options: [
+        'Kueche streichen',
+        'Wand streichen',
+        'Haus streichen, malen',
+        'Zimmer streichen',
+        'Wohnung streichen, malen',
+        'Malerarbeiten',
+        'Decke verputzen',
+        'Wand verputzen',
+      ],
+    },
+    textareaProps: {
+      label: 'Beschreiben Sie die auszuführende Arbeiten:* ',
+      formFieldTitle: 'description',
+      rows: '10',
+    },
+    emailProps: {
+      label: 'Email*',
+      formFieldTitle: 'email',
+    },
+  };
+  
   constructor(private http: HttpClient) {}
+  
 
   postFormData(data?) {
     data = {

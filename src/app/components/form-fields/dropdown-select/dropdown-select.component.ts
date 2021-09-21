@@ -7,16 +7,13 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./dropdown-select.component.scss'],
 })
 export class DropdownSelectComponent implements OnInit {
-  @Input()
-  label: string | undefined;
+  @Input() label: string;
 
-  @Input()
-  formFieldTitle: string | undefined;
+  @Input() formFieldTitle: string;
 
-  @Input()
-  options: string[] = [];
+  @Input() options: string[] = [];
 
-  @Input() placeholder: string | undefined;
+  @Input() placeholder: string;
 
   @Input() parentForm: FormGroup;
 
@@ -29,24 +26,24 @@ export class DropdownSelectComponent implements OnInit {
     this.optionsToFilter = this.options;
   }
 
-  optionSelectedHandler(event) {
+  optionSelectedHandler(event) { 
     this.value = event;
     this.focused = false;
   }
 
   // filter options when user types
-  filterOptionsHandler(event: Event) {
+  filterOptionsHandler(event: Event) { 
+    this.focused = true;
+    const typedValue = (event.target as HTMLInputElement).value;
     this.options = this.optionsToFilter.filter((option) =>
-      option.toLowerCase().includes((event.target as HTMLInputElement).value)
+      option.toLowerCase().includes(typedValue.toLowerCase())
     );
-    this.checkTypedValue();
+    // this.checkTypedValue(typedValue);
   }
 
   // check if typed value matches with some in predefined options
-  checkTypedValue(event?: Event) {
-    const currentInput = this.control.value;
-    const isMatching = this.optionsToFilter.includes(currentInput);
-
+  checkTypedValue(typedValue) {
+    const isMatching = this.optionsToFilter.includes(typedValue);
     // no match - error
     if (!isMatching) {
       this.control.setErrors({ required: true });

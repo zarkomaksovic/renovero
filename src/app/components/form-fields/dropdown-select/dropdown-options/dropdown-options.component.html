@@ -2,8 +2,8 @@
   <span
     *ngFor="let option of options"
     class="option"
-    (click)="updateInput(option)"
+    (mousedown)="updateInput(option)"
     >{{ option }}</span
   >
-  <span *ngIf="options.length == 0"> No mathing values </span>
+  <span *ngIf="options.length == 0"> No matching values </span>
 </div>

@@ -7,14 +7,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./email-input.component.scss'],
 })
 export class EmailInputComponent implements OnInit {
-  @Input()
-  label: string | undefined;
+  @Input() label: string;
 
-  @Input()
-  formFieldTitle: string | undefined;
-
-  @Input()
-  rows: string | undefined;
+  @Input() formFieldTitle: string;
 
   @Input() parentForm: FormGroup;
   constructor() {}
@@ -22,12 +17,12 @@ export class EmailInputComponent implements OnInit {
   ngOnInit(): void {
     this.setEmailValidation();
   }
+
+  // parent form sets other types of validation,
+  // since this is an email field component, 
+  // email validator added at this level
   setEmailValidation() {
     this.control.addValidators(Validators.email);
-  }
-
-  get controls() {
-    return this.parentForm.controls;
   }
 
   get control() {

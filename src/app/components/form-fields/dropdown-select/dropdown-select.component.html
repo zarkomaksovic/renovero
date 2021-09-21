@@ -1,28 +1,39 @@
-<!-- form group passed from parent form  -->
-<div class="input-holder" [formGroup]="parentForm">
+
+<div class="input-holder" [formGroup]="parentForm" #container>
   <div class="f-col">
     <label>{{ label }}</label>
 
+    <!-- text input field  -->
     <div class="input-wrapper">
       <input
         type="text"
         [placeholder]="placeholder"
         (keyup)="filterOptionsHandler($event)"
-        (click)="focused = !focused"
+        (click)="switchFocus()"
+        (blur)="focused = false"
         [formControlName]="formFieldTitle"
         [class.invalid]="control.invalid && (control.dirty || control.touched)"
       />
-
+    <!--/ text input field end /-->
+    
+    <!-- arrow icon   -->
       <span class="arrow-field" (click)="switchFocus()">
         <span class="arrow" [ngClass]="{ open: focused }"></span>
       </span>
+    <!--/ arrow icon end /-->
 
+    <!-- dropdown options   -->
       <app-dropdown-options
         [focused]="focused"
         [options]="options"
         (onOptionSelect)="optionSelectedHandler($event)"
       ></app-dropdown-options>
+    <!-- dropdown options end /-->
+
+    <!-- error message component  -->
       <app-error-message [control]="control"></app-error-message>
+    <!--/ error message component end /-->
+
     </div>
   </div>
 </div>

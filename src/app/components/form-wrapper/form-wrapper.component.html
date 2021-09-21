@@ -13,14 +13,14 @@
 
   <!-- form content start  -->
   <div class="form-holder">
-    <form [formGroup]="myForm" (ngSubmit)="submit()">
+    <form [formGroup]="findPainterForm">
       <!-- dropdown component  -->
       <app-dropdown-select
         [label]="dropdownProps.label"
+        [parentForm]="findPainterForm"
+        [formFieldTitle]="dropdownProps.formFieldTitle"
         [options]="dropdownProps.options"
         [placeholder]="dropdownProps.placeholder"
-        [parentForm]="myForm"
-        [formFieldTitle]="dropdownProps.formFieldTitle"
       >
       </app-dropdown-select>
       <!--/ dropdown component end  /-->
@@ -28,7 +28,7 @@
       <!-- textarea component  -->
       <app-text-area
         [label]="textareaProps.label"
-        [parentForm]="myForm"
+        [parentForm]="findPainterForm"
         [formFieldTitle]="textareaProps.formFieldTitle"
         [rows]="textareaProps.rows"
       ></app-text-area>
@@ -37,16 +37,16 @@
       <!-- email component  -->
       <app-email-input
         [label]="emailProps.label"
-        [parentForm]="myForm"
+        [parentForm]="findPainterForm"
         [formFieldTitle]="emailProps.formFieldTitle"
       ></app-email-input>
       <!--/ email component end /-->
 
       <!-- submit button component  -->
       <app-form-submit
+        [parentForm]="findPainterForm"
         buttonLabel="Submit"
         (onSubmitEvent)="onSubmitHandler()"
-        [parentForm]="myForm"
         [buttonLabel]="buttonLabel"
       ></app-form-submit>
       <!--/ submit button component end /-->

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,21 +6,15 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './text-area.component.html',
   styleUrls: ['./text-area.component.scss']
 })
-export class TextAreaComponent implements OnInit {
-  @Input()
-  label: string | undefined;
+export class TextAreaComponent  {
+  @Input() label: string;
 
-  @Input()
-  formFieldTitle: string | undefined;
+  @Input() formFieldTitle: string;
 
-  @Input()
-  rows: string | undefined;
+  @Input() rows: string;
 
   @Input() parentForm: FormGroup;
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   get control() {
     return this.parentForm.get(this.formFieldTitle) as FormControl;

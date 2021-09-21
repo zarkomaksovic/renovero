@@ -14,7 +14,8 @@ export class DropdownOptionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateInput(option) {
+  updateInput(option: string) {
     this.onOptionSelect.emit(option);
   }
 }
+ 
