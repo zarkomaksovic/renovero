@@ -1,0 +1,18 @@
+@import "../../../../../src/app/scss/variables";
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: $primary-color;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+  &:disabled {
+    background: $primary-color-disabled;
+    color: $text-color-disabled;
+  }
+}

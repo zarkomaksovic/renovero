@@ -1,0 +1,9 @@
+<div class="options-holder" [ngClass]="{ 'open-options': focused }">
+  <span
+    *ngFor="let option of options"
+    class="option"
+    (mousedown)="updateInput(option)"
+    >{{ option }}</span
+  >
+  <span *ngIf="options.length == 0"> No matching values </span>
+</div>

@@ -1,0 +1,64 @@
+<!-- Form wrapper start -->
+<div class="form-container">
+  <!-- form header start  -->
+  <div class="form-header">
+    <span class="title"> {{ formTitle }} </span>
+  </div>
+  <p class="subtitle">
+    Mit <strong>10 Jahren Erfahrung </strong> hilft Ihnen renovero unkompliziert
+    Ihren <strong>Fachmann</strong>
+    finden.
+  </p>
+  <!--/ form header end /-->
+
+  <!-- form content start  -->
+  <div class="form-holder">
+    <form [formGroup]="findPainterForm">
+      <!-- dropdown component  -->
+      <app-dropdown-select
+        [label]="dropdownProps.label"
+        [parentForm]="findPainterForm"
+        [formFieldTitle]="dropdownProps.formFieldTitle"
+        [options]="dropdownProps.options"
+        [placeholder]="dropdownProps.placeholder"
+      >
+      </app-dropdown-select>
+      <!--/ dropdown component end  /-->
+
+      <!-- textarea component  -->
+      <app-text-area
+        [label]="textareaProps.label"
+        [parentForm]="findPainterForm"
+        [formFieldTitle]="textareaProps.formFieldTitle"
+        [rows]="textareaProps.rows"
+      ></app-text-area>
+      <!--/ textarea component end /-->
+
+      <!-- email component  -->
+      <app-email-input
+        [label]="emailProps.label"
+        [parentForm]="findPainterForm"
+        [formFieldTitle]="emailProps.formFieldTitle"
+      ></app-email-input>
+      <!--/ email component end /-->
+
+      <!-- submit button component  -->
+      <app-form-submit
+        [parentForm]="findPainterForm"
+        buttonLabel="Submit"
+        (onSubmitEvent)="onSubmitHandler()"
+        [buttonLabel]="buttonLabel"
+      ></app-form-submit>
+      <!--/ submit button component end /-->
+    </form>
+  </div>
+  <!--/ form content end  /-->
+</div>
+<!--/ Form wrapper end /-->
+
+<!-- customer message container  -->
+<app-customer-message
+[isSuccess]="isSuccess"
+[showCustomMessageContainer]="showCustomMessageContainer"
+[message]="message"></app-customer-message>
+<!--/ customer message container  /-->

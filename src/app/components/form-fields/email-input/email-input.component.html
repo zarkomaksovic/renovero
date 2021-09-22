@@ -1,0 +1,18 @@
+<div class="input-holder" [formGroup]="parentForm">
+  <div class="f-col">
+    <label>{{ label }}</label>
+    <div class="input-wrapper">
+      <!-- input field  -->
+      <input
+        type="email"
+        [formControlName]="formFieldTitle"
+        [class.invalid]="control.invalid && (control.dirty || control.touched)"
+      />
+      <!-- input field end -->
+
+      <!-- error message component  -->
+      <app-error-message [control]="control"></app-error-message>
+      <!-- error message component end -->
+    </div>
+  </div>
+</div>
