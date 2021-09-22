@@ -1,6 +1,8 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, retry } from 'rxjs/operators';
+import { ErrorHandlingService } from './error-handling.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -34,21 +36,23 @@ export class DataService {
       formFieldTitle: 'email',
     },
   };
-  
-  constructor(private http: HttpClient) {}
-  
 
-  postFormData(data?) {
-    data = {
-      title: 'title test',
-      description: 'desc test',
+  constructor(
+    private http: HttpClient,
+    private errorService: ErrorHandlingService
+  ) {}
+
+  postFormData({ title, description, email }) {
+    const data = {
+      title,
+      description,
       place: {
         id: 2658937,
         placeName: 'Testplace',
         placeZip: '1234',
       },
       publisherAccountCreate: {
-        email: 'test@test.test',
+        email,
         phone: '0123456789',
         place: {
           id: 2658937,
@@ -58,10 +62,12 @@ export class DataService {
       },
     };
 
+    console.log(data);
     return this.http
       .post(`${environment.baseUrl}tasks`, data)
-      .pipe
-      // catchError(this.errorService.handleError)
-      ();
+      .pipe(
+        retry(1),
+        catchError(this.errorService.handleError)
+      );
   }
 }

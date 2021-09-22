@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
 import { ContainerCenterComponent } from './components/container-center/container-center.component';
 import { DropdownSelectComponent } from './components/form-fields/dropdown-select/dropdown-select.component';
 import { TextAreaComponent } from './components/form-fields/text-area/text-area.component';
@@ -13,18 +12,25 @@ import { FormSubmitComponent } from './components/buttons/form-submit/form-submi
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
 import { DropdownOptionsComponent } from './components/form-fields/dropdown-select/dropdown-options/dropdown-options.component';
+import { ErrorHandlingService } from './services/error-handling.service';
+import { FindPainterFormComponent } from './components/find-painter-form/find-painter-form.component';
 
 // Components registered in module
 const components = [
   AppComponent,
-  FormWrapperComponent,
   ContainerCenterComponent,
   DropdownSelectComponent,
+  TextAreaComponent,
+  EmailInputComponent,
+  FormSubmitComponent,
+  ErrorMessageComponent,
+  DropdownOptionsComponent,
+  FindPainterFormComponent,
 ];
 @NgModule({
-  declarations: [components, TextAreaComponent, EmailInputComponent, FormSubmitComponent, ErrorMessageComponent, DropdownOptionsComponent],
+  declarations: [components],
   imports: [BrowserModule, SharedModule, HttpClientModule],
-  providers: [DataService],
+  providers: [DataService, ErrorHandlingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

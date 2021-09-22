@@ -1,4 +1,3 @@
-import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {
@@ -6,13 +5,13 @@ import {
   ItextareaFieldInterface,
   IcommonFormInterface,
 } from 'src/app/interfaces/form-fields-interfaces';
-
+import { DataService } from 'src/app/services/data.service';
 @Component({
-  selector: 'app-form-wrapper',
-  templateUrl: './form-wrapper.component.html',
-  styleUrls: ['./form-wrapper.component.scss'],
+  selector: 'app-find-painter-form',
+  templateUrl: './find-painter-form.component.html',
+  styleUrls: ['./find-painter-form.component.scss'],
 })
-export class FormWrapperComponent implements OnInit {
+export class FindPainterFormComponent implements OnInit {
   findPainterForm: FormGroup;
   dropdownProps: IdropdownFieldInterface;
   textareaProps: ItextareaFieldInterface;
@@ -31,10 +30,10 @@ export class FormWrapperComponent implements OnInit {
     this.buildForm();
   }
 
-  // used just for test purpose 
+  // used just for test purpose
   getMockData(mockData) {
     for (const [key, value] of Object.entries(mockData)) {
-      this[key] = value
+      this[key] = value;
     }
   }
 
@@ -48,9 +47,13 @@ export class FormWrapperComponent implements OnInit {
   }
 
   onSubmitHandler() {
-    this.dataService.postFormData().subscribe((res) => {
-      console.log(res);
+    this.dataService.postFormData(this.findPainterForm.value).subscribe({
+      next(response) {
+        console.log('Current response: ', response);
+      },
+      error(msg) {
+        console.log('Error Getting response: ', msg);
+      },
     });
   }
-  
 }
