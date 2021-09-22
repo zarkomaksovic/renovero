@@ -1,0 +1,10 @@
+<div
+  *ngIf="showCustomMessageContainer"
+  class="message-container"
+  [ngClass]="isSuccess ? 'success' : 'error'"
+>
+  <h4>
+    {{ message }}
+  </h4>
+  <span id="close" (click)="showCustomMessageContainer = false">Close</span>
+</div>

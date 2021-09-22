@@ -2,12 +2,12 @@
 @import "../../../../src/app/scss/mixins";
 
 .form-container {
-  width: 550px;
+  width: $form-width;
   min-height: 500px;
   box-sizing: border-box;
   padding: 16px;
   background: #ffffff;
-  box-shadow: 0 0 21px 5px #00000026;
+  box-shadow: $form-shadow;
   border-radius: 2px;
   border-top: 8px solid $primary-color;
   @include mobile {
@@ -34,3 +34,4 @@
     margin-bottom: 20px;
   }
 }
+

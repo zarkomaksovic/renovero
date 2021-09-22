@@ -6,6 +6,7 @@ import {
   IcommonFormInterface,
 } from 'src/app/interfaces/form-fields-interfaces';
 import { DataService } from 'src/app/services/data.service';
+import { IfindPainterResponse } from './../../interfaces/find-painter-response';
 @Component({
   selector: 'app-find-painter-form',
   templateUrl: './find-painter-form.component.html',
@@ -18,7 +19,9 @@ export class FindPainterFormComponent implements OnInit {
   emailProps: IcommonFormInterface;
   formTitle: string;
   buttonLabel: string;
-
+  showCustomMessageContainer = false;
+  message: string;
+  isSuccess: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService
@@ -27,7 +30,7 @@ export class FindPainterFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.buildForm();
+    this.findPainterForm = this.buildForm();
   }
 
   // used just for test purpose
@@ -39,21 +42,35 @@ export class FindPainterFormComponent implements OnInit {
 
   //create find painter form and define fields
   buildForm() {
-    this.findPainterForm = this.formBuilder.group({
+    return this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
   }
 
+  // display message to user
+  showCustomerMessage(message) {
+    this.message = message;
+    this.showCustomMessageContainer = true;
+  }
+
+  // submit form data
   onSubmitHandler() {
-    this.dataService.postFormData(this.findPainterForm.value).subscribe({
-      next(response) {
-        console.log('Current response: ', response);
+    this.dataService.postFormData(this.findPainterForm.value).subscribe(
+      (response: IfindPainterResponse) => {
+        this.isSuccess = true;
+        const message =
+          'Your request for ' + response.task.title + 'has been accepted.';
+        this.showCustomerMessage(message);
       },
-      error(msg) {
-        console.log('Error Getting response: ', msg);
-      },
-    });
+      (error) => {
+        this.isSuccess = false;
+        const message =
+          'Something is wrong with your request, please try again later';
+        this.showCustomerMessage(message);
+        console.error(error);
+      }
+    );
   }
 }

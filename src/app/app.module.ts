@@ -14,6 +14,7 @@ import { ErrorMessageComponent } from './components/shared/error-message/error-m
 import { DropdownOptionsComponent } from './components/form-fields/dropdown-select/dropdown-options/dropdown-options.component';
 import { ErrorHandlingService } from './services/error-handling.service';
 import { FindPainterFormComponent } from './components/find-painter-form/find-painter-form.component';
+import { CustomerMessageComponent } from './components/shared/customer-message/customer-message.component';
 
 // Components registered in module
 const components = [
@@ -26,6 +27,7 @@ const components = [
   ErrorMessageComponent,
   DropdownOptionsComponent,
   FindPainterFormComponent,
+  CustomerMessageComponent,
 ];
 @NgModule({
   declarations: [components],
